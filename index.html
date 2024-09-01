@@ -815,7 +815,7 @@
         </div>
         <!-- ========== Start contact from ========== -->
         <div class="row">
-          <div class="contact-form">
+          <!-- <div class="contact-form">
             <form action="" method="">
               <div class="row">
                 <div class="w-50">
@@ -838,6 +838,33 @@
               <div class="row">
                 <div class="submit-btn">
                   <button class="btn-1 outer-shadow outer-shadw hover-in-shadow submit">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div> -->
+          <div class="contact-form">
+            <form id="contact-form">
+              <div class="row">
+                <div class="w-50">
+                  <div class="input-group outer-shadow hover-in-shadow">
+                    <input class="input-control" type="text" name="name" id="name" placeholder="Name" required>
+                  </div>
+                  <div class="input-group outer-shadow hover-in-shadow">
+                    <input class="input-control" type="email" name="email" id="email" placeholder="email" required>
+                  </div>
+                  <div class="input-group outer-shadow hover-in-shadow">
+                    <input class="input-control" type="text" name="subject" id="subject" placeholder="Subject" required>
+                  </div>
+                </div>
+                <div class="w-50">
+                  <div class="input-group outer-shadow hover-in-shadow">
+                    <textarea class="input-control" name="message" id="message" required placeholder="Type here..."></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="submit-btn">
+                  <button class="btn-1 outer-shadow hover-in-shadow submit" type="submit">Send Message</button>
                 </div>
               </div>
             </form>
@@ -925,6 +952,7 @@
     <script src="js/glassmorphism-animation.js"></script>
     <script src="js/autoTypingAnimation.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
       VanillaTilt.init(document.querySelectorAll(".contact-card"), {
         max: 25,
@@ -940,6 +968,24 @@
         max: 25,
         speed: 300
       };
+      (function() {
+    emailjs.init("MhwLA3wiC_7eoTHIJ"); // Replace 'YOUR_USER_ID' with your actual Email.js user ID
+  })();
+
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm('shameer_123', 'template_5v43dl6', this)
+        .then(function() {
+            alert('Message sent successfully!');
+        }, function(error) {
+            alert('Failed to send the message, please try again.');
+        });
+});
+
     </script>
   </body>
 </html>
+<!-- shameer_123
+template_5v43dl6
+MhwLA3wiC_7eoTHIJ -->
